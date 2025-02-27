@@ -1,0 +1,49 @@
+<!-- views/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Login - TechReady</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+</head>
+<body>
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="/">
+          <span>TechReady</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="layout_padding">
+    <div class="container">
+      <h2 class="text-center" style="color:#00204a; margin-bottom:30px;">Login</h2>
+      <form method="POST" action="/login">
+        <div class="form-group">
+          <label for="email" style="color:#00204a;">Email</label>
+          <input type="email" name="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password" style="color:#00204a;">Password</label>
+          <input type="password" name="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="footer_section">
+    <div class="container">
+      <p>&copy; <span id="displayYear"></span> All Rights Reserved By <a href="/">TechReady</a></p>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/custom.js"></script>
+</body>
+</html>

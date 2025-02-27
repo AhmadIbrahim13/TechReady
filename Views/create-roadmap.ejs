@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="/admin" class="brand-link">
+          <img
+            src="/dist/img/AdminLTELogo.png"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Admin Panel</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="/dist/img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="Admin User"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Admin User</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu (Add your admin links here) -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+            >
+              <li class="nav-item">
+                <a href="/admin" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Manage Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/courses" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Courses</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/roadmaps" class="nav-link active">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Road Maps</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/jobs" class="nav-link ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p> Jobs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/logout" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Log Out</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <h1>Create a New Roadmap</h1>
+          </div>
+        </div>
+        <section class="content">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Roadmap Details</h3>
+              </div>
+              <div class="card-body">
+                <form action="/admin/create-roadmap" method="post">
+                  <div class="form-group">
+                    <label>Roadmap Title</label>
+                    <input
+                      name="title"
+                      type="text"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label>Description (optional)</label>
+                    <textarea
+                      name="description"
+                      class="form-control"
+                    ></textarea>
+                  </div>
+
+                  <h4>Steps</h4>
+                  <div id="steps-container">
+                    <div class="step-item mb-3">
+                      <label>Step Title</label>
+                      <input
+                        name="steps[0][step_title]"
+                        type="text"
+                        class="form-control mb-2"
+                        required
+                      />
+                      <label>Step Description</label>
+                      <textarea
+                        name="steps[0][step_description]"
+                        class="form-control mb-2"
+                      ></textarea>
+                      <input
+                        type="hidden"
+                        name="steps[0][step_order]"
+                        value="1"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn btn-secondary mb-3"
+                    id="add-step"
+                  >
+                    Add Another Step
+                  </button>
+                  <button type="submit" class="btn btn-success">
+                    Create Roadmap
+                  </button>
+                  <a href="/admin/roadmaps" class="btn btn-secondary">Cancel</a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script>
+      let stepCount = 1;
+      $("#add-step").on("click", function () {
+        stepCount++;
+        $("#steps-container").append(`
+      <div class="step-item mb-3">
+        <label>Step Title</label>
+        <input name="steps[${stepCount}][step_title]" type="text" class="form-control mb-2" required>
+        <label>Step Description</label>
+        <textarea name="steps[${stepCount}][step_description]" class="form-control mb-2"></textarea>
+        <input type="hidden" name="steps[${stepCount}][step_order]" value="${stepCount + 1}">
+      </div>
+    `);
+      });
+    </script>
+  </body>
+</html>

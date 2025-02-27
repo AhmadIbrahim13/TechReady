@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="/admin" class="brand-link">
+          <img
+            src="/dist/img/AdminLTELogo.png"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Admin Panel</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="/dist/img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="Admin User"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Admin User</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu (Add your admin links here) -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+            >
+              <li class="nav-item">
+                <a href="/admin" class="nav-link ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Manage Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/interviewers" class="nav-link">
+                  <i class="nav-icon fas fa-chalkboard-teacher"></i>
+                  <p>Manage Interviewers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/courses" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>Courses</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="/admin/roadmaps" class="nav-link active">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Road Maps</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/jobs" class="nav-link ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p> Jobs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/feedbacks" class="nav-link">
+                  <i class="nav-icon fas fa-comment-alt"></i>
+                  <p>Feedbacks</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="/logout" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Log Out</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Make sure sidebar has the Roadmaps menu -->
+
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+        <div class="content-header">
+          <div class="container-fluid">
+            <h1>All Roadmaps</h1>
+          </div>
+        </div>
+
+        <section class="content">
+          <div class="container-fluid">
+            <div class="card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <h3 class="card-title">Roadmaps</h3>
+                <a class="btn btn-primary" href="/admin/create-roadmap">
+                  <i class="fas fa-plus"></i> Create New Roadmap
+                </a>
+              </div>
+              <div class="card-body table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Steps</th>
+                      <th style="width: 150px">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (roadmaps && roadmaps.length > 0) { %> <%
+                    roadmaps.forEach(r => { %>
+                    <tr>
+                      <td><%= r.id %></td>
+                      <td><%= r.title %></td>
+                      <td><%= r.description %></td>
+                      <td>
+                        <a
+                          href="/admin/roadmaps/<%= r.id %>/steps"
+                          class="btn btn-info btn-sm"
+                          >View Steps</a
+                        >
+                      </td>
+                      <td>
+                        <a
+                          href="/admin/edit-roadmap/<%= r.id %>"
+                          class="btn btn-sm btn-info"
+                          ><i class="fas fa-edit"></i
+                        ></a>
+                        <form
+                          action="/admin/delete-roadmap/<%= r.id %>"
+                          method="post"
+                          style="display: inline"
+                        >
+                          <button class="btn btn-sm btn-danger" type="submit">
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                    <% }) %> <% } else { %>
+                    <tr>
+                      <td colspan="5" class="text-center">No roadmaps found</td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+  </body>
+</html>

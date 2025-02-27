@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags, title, links to CSS same as index.html -->
+    <meta charset="utf-8">
+    <title>Signup - TechReady</title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
+</head>
+<body>
+  <!-- Reuse your header section similar to index.html -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container ">
+        <a class="navbar-brand" href="/">
+          <span>TechReady</span>
+        </a>
+        <!-- Navbar links -->
+      </nav>
+    </div>
+  </header>
+
+  <section class="layout_padding">
+    <div class="container">
+      <h2 class="text-center" style="color:#00204a; margin-bottom:30px;">Signup</h2>
+      <form method="POST" action="/signup">
+        <div class="form-group">
+          <label for="firstName" style="color:#00204a;">First Name</label>
+          <input type="text" name="firstName" class="form-control" id="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName" style="color:#00204a;">Last Name</label>
+          <input type="text" name="lastName" class="form-control" id="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="email" style="color:#00204a;">Email</label>
+          <input type="email" name="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password" style="color:#00204a;">Password</label>
+          <input type="password" name="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer section same as index.html -->
+  <section class="footer_section">
+    <div class="container">
+      <p>&copy; <span id="displayYear"></span> All Rights Reserved By <a href="/">TechReady</a></p>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/js/custom.js"></script>
+</body>
+</html>

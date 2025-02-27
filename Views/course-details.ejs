@@ -1,0 +1,146 @@
+<!-- views/course-details.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css" />
+  </head>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="/admin" class="brand-link">
+          <img
+            src="/dist/img/AdminLTELogo.png"
+            alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3"
+            style="opacity: 0.8"
+          />
+          <span class="brand-text font-weight-light">Admin Panel</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img
+                src="/dist/img/user2-160x160.jpg"
+                class="img-circle elevation-2"
+                alt="Admin User"
+              />
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Admin User</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu (Add your admin links here) -->
+          <nav class="mt-2">
+            <ul
+              class="nav nav-pills nav-sidebar flex-column"
+              data-widget="treeview"
+              role="menu"
+            >
+              <li class="nav-item">
+                <a href="/admin" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Manage Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/courses" class="nav-link active">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Courses</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/roadmaps" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Road Maps</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/jobs" class="nav-link ">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p> Jobs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/logout" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>Log Out</p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+      <!-- Content Wrapper -->
+      <div class="content-wrapper">
+        <!-- Content Header -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <h1>Course Details</h1>
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Course Details Card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"><%= course.title %></h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Instructor:</strong> <%= course.instructor %></p>
+                <p><strong>Duration:</strong> <%= course.duration %></p>
+                <p><strong>Description:</strong></p>
+                <p>
+                  <%= course.description ? course.description : 'No description
+                  provided.' %>
+                </p>
+              </div>
+              <div class="card-footer">
+                <a
+                  href="/admin/edit-course/<%= course.id %>"
+                  class="btn btn-warning"
+                  >Edit Course</a
+                >
+                <a href="/admin/courses" class="btn btn-secondary"
+                  >Back to Courses</a
+                >
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+  </body>
+</html>
